@@ -1,0 +1,5 @@
+FourierD3
+Copyright (c) 2025-2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This product includes portions of OpenXLA C API headers, licensed under the
+Apache License, Version 2.0, in rust/fourierd3_engine/include.

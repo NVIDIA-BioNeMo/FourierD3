@@ -1,0 +1,15 @@
+repos:
+  - repo: local
+    hooks:
+      - id: cargo-fmt
+        name: cargo fmt
+        language: system
+        entry: cargo fmt --all --
+        files: \.rs$
+        pass_filenames: false
+      - id: cargo-clippy-maintainability
+        name: cargo clippy maintainability
+        language: system
+        entry: cargo clippy --workspace --all-targets -- -D warnings -D clippy::wildcard_imports -D clippy::cognitive_complexity
+        files: \.rs$
+        pass_filenames: false

@@ -1,0 +1,62 @@
+[build-system]
+build-backend = "maturin"
+requires = ["maturin>=1.9,<2.0"]
+
+[project]
+name = "FourierD3"
+version = "0.3.0"
+description = "GPU-accelerated periodic DFT-D3(BJ) energy and derivatives in JAX"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{name = "NVIDIA CORPORATION & AFFILIATES"}]
+dependencies = [
+    "equinox",
+    "jax>=0.8.0",
+    "llvmlite",
+    "sympy",
+]
+
+[project.optional-dependencies]
+cuda13 = [
+    "jax[cuda13]>=0.8.0",
+    "nvidia-cuda-cccl>=13,<14",
+    "nvidia-cuda-nvrtc>=13,<14",
+    "nvidia-cuda-runtime>=13,<14",
+    "nvidia-libmathdx-cu13>=0.4.0,<0.4.1",
+    "nvidia-nvjitlink>=13,<14",
+]
+cuda12 = [
+    "jax[cuda12]>=0.8.0",
+    "nvidia-cuda-cccl-cu12",
+    "nvidia-cuda-nvrtc-cu12",
+    "nvidia-cuda-runtime-cu12",
+    "nvidia-libmathdx-cu12>=0.4.0,<0.4.1",
+    "nvidia-nvjitlink-cu12",
+]
+test = ["numpy", "pytest"]
+
+[tool.maturin]
+features = ["pyo3/extension-module"]
+manifest-path = "rust/fourierd3_engine/Cargo.toml"
+module-name = "fourierd3._engine._extension"
+python-source = "src"
+# The source archive is the release artifact, so it carries what building and
+# testing from it needs: the test suite the README's workflow runs, and the
+# policy files a source consumer reads.
+include = [
+    { path = "tests/**/*.py", format = "sdist" },
+    { path = "docs/**/*.md", format = "sdist" },
+    { path = "CONTRIBUTING.md", format = "sdist" },
+    { path = "SECURITY.md", format = "sdist" },
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

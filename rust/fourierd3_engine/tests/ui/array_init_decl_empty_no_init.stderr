@@ -1,0 +1,5 @@
+error: expected `= { ... }` after `[]` (empty brackets only valid for an initializer-list decl)
+  --> tests/ui/array_init_decl_empty_no_init.rs:14:16
+   |
+14 |         i32 x[];
+   |                ^

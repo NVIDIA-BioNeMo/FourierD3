@@ -1,0 +1,5 @@
+error: expression statement must be a call; bare expressions are not allowed
+  --> tests/ui/bare_expression_stmt.rs:13:9
+   |
+13 |         x + y;
+   |         ^

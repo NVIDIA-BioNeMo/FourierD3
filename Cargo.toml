@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: Copyright (c) 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+
+[workspace]
+resolver = "2"
+members = [
+    "rust/fourierd3_engine",
+    "rust/fourierd3_macros",
+]
+
+[workspace.package]
+edition = "2024"
+license = "Apache-2.0"
+publish = false
+version = "0.3.0"
+
+[workspace.lints.clippy]
+missing_safety_doc = "allow"
+
+[workspace.lints.rust]
+dead_code = "deny"
+unreachable_pub = "deny"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = "symbols"

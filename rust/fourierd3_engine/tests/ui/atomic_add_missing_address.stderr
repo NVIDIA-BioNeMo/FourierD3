@@ -1,0 +1,5 @@
+error: atomicAdd's first argument must be `&<lvalue>` (the address of the atomic target)
+  --> tests/ui/atomic_add_missing_address.rs:12:19
+   |
+12 |         atomicAdd(out_0[i], val);
+   |                   ^^^^^

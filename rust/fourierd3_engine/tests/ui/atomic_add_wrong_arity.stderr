@@ -1,0 +1,5 @@
+error: atomicAdd takes exactly 2 arguments; got extra tokens
+  --> tests/ui/atomic_add_wrong_arity.rs:12:33
+   |
+12 |         atomicAdd(&out_0[i], val, extra);
+   |                                 ^

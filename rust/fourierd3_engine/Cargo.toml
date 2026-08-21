@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: Copyright (c) 2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+
+[package]
+name = "fourierd3_engine"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license.workspace = true
+description = "The complete native FourierD3 engine: kernel compilation, CUDA execution, execution plans, and the Python XLA FFI extension."
+
+[lib]
+name = "fourierd3_engine"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+fourierd3_macros = { path = "../fourierd3_macros" }
+inventory = "0.3"
+libloading = "0.8"
+parking_lot = "0.12"
+pyo3 = { version = "0.22", features = ["extension-module", "abi3-py311"] }
+rayon = "1"
+
+[dev-dependencies]
+trybuild = "1.0"
+
+[build-dependencies]
+bindgen = "0.72"
+pyo3-build-config = "0.22"
+
+[lints]
+workspace = true

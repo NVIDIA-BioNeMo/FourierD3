@@ -1,0 +1,5 @@
+error: `if (...)` must be followed by `return;`, `continue;`, or `{ ... }`
+  --> tests/ui/if_needs_braces_or_return.rs:14:26
+   |
+14 |         if (idx >= 1024) out_0[idx] = 0;
+   |                          ^^^^^

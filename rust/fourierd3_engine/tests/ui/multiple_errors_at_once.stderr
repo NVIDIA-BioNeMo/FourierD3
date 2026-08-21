@@ -1,0 +1,17 @@
+error: `if (...)` must be followed by `return;`, `continue;`, or `{ ... }`
+  --> tests/ui/multiple_errors_at_once.rs:15:22
+   |
+15 |         if (idx < n) idx = idx + 1;
+   |                      ^^^
+
+error: expression statement must be a call; bare expressions are not allowed
+  --> tests/ui/multiple_errors_at_once.rs:16:9
+   |
+16 |         x + y;
+   |         ^
+
+error: atomicAdd's first argument must be `&<lvalue>` (the address of the atomic target)
+  --> tests/ui/multiple_errors_at_once.rs:17:19
+   |
+17 |         atomicAdd(out[i], val);
+   |                   ^^^
